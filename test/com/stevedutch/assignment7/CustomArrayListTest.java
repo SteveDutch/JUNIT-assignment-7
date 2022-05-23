@@ -23,5 +23,23 @@ class CustomArrayListTest {
 		assertEquals("2nd String", exspectedResult);
 		
 	}
+	
+	@Test
+	void should_remove_item_and_shuffle_leftsided_items_leftwards() {
+		CustomList <String> sut = new CustomArrayList<>(); 
+		
+		sut.add("a first test");
+		sut.add("2nd String");
+		sut.add("third");
+		sut.add("forth");
+		sut.remove(1);
+		
+		String exspectedtResult = sut.get(1);
+		
+		assertEquals("third", exspectedtResult);
+		
+	}
+	
+	
 
 }
