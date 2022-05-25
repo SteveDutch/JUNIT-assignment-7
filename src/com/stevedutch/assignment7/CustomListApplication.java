@@ -19,7 +19,8 @@ public class CustomListApplication {
 			System.out.println(myCustomList.get(i));
 		}
 		
-		System.out.println(myCustomList.remove(99));
+//		System.out.println(myCustomList.remove(99));
+//		System.out.println(myCustomList.add(99, "null is not good"));
 
 	}
 
