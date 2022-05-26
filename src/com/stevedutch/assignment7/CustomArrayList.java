@@ -40,7 +40,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		return place;
+		return size;
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops... Index out Of Bounds or so ;)---");
 		}
-		T output = (T) items[index];
-		return output;
+		
+		return (T) items[index];
 	}
 
 	public T remove(int index) throws IndexOutOfBoundsException {

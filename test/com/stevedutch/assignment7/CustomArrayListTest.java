@@ -10,9 +10,88 @@ import org.junit.jupiter.api.function.Executable;
 import com.coderscampus.arraylist.CustomList;
 
 class CustomArrayListTest {
+	private static final Object exspectedlResult = null;
 	//TODO check Generic statt String
 	
+	@Test
+	void testAdd() {
+		CustomList<String> sut = new CustomArrayList<>();
+		sut.add("a first test");
+		
+		
+		boolean exspectedResult = sut.add("2nd String");
+
 	
+		assertEquals("2nd String", sut.get(1));
+		assertEquals(true, exspectedResult);
+	}
+	
+	@Test
+	void testAddTwoArguments() {
+		CustomList<String> sut = new CustomArrayList<>();
+		sut.add("a first test");
+		sut.add("2nd String");
+		sut.add("third");
+		
+			
+		boolean exspectedBoolResult = sut.add(2, "new three");
+		String exspectedtResult = sut.get(2);
+		
+		assertEquals("new three", exspectedtResult);
+		assertEquals(true, exspectedBoolResult);
+		
+		
+	}
+	@Test
+	void should_throw_exception_twoArgumentAdd() {
+
+			CustomList<String> sut = new CustomArrayList<>();
+			IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+	            sut.add(99, "an index to make the function throw");
+	        });
+			   assertEquals("Ooops... here's the Index out Of Bounds :O ", exception.getMessage());
+	}
+	
+
+	@Test
+	void testGetSize() {
+		CustomList<String> sut = new CustomArrayList<>();
+		sut.add("a first test");
+		sut.add("2nd String");
+		
+		int exspectedResult = sut.getSize();
+		
+		assertEquals(10, exspectedResult);
+	}
+	
+	@Test
+	void testGet() {
+		CustomList<String> sut = new CustomArrayList<>();
+		sut.add("a first test");
+		sut.add("2nd String");
+		sut.add("third");
+
+		String exspectedtResult = sut.get(0);
+		assertEquals("a first test", exspectedtResult);
+		// works, but is just testing if there is an exception (& not, if it's the thrwon exception)
+//		assertThrows(IndexOutOfBoundsException.class, new Executable() {
+//
+//			@Override
+//			public void execute() throws Throwable {
+//				CustomList<String> sut = new CustomArrayList<>();
+//				sut.add("a first test");
+//				sut.add("2nd String");
+//				sut.add("third");
+//
+//				sut.get(0);
+//			}
+//		});
+		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            sut.get(99);
+        });
+		   assertEquals("Ooops... Index out Of Bounds or so ;)---", exception.getMessage());
+	}
+	// Testing:  T remove(int index) throws IndexOutOfBoundsException
 	@Test
 	void should_return_T() {
 		CustomList <String> sut = new CustomArrayList<>(); 
@@ -64,70 +143,7 @@ class CustomArrayListTest {
 		   assertEquals("Ooops...your removal lead into Index out Of Bounds or so ;)---", exception.getMessage());
 	}
 	
-	@Test
-	void testGet() {
-		CustomList<String> sut = new CustomArrayList<>();
-		sut.add("a first test");
-		sut.add("2nd String");
-		sut.add("third");
 
-		String exspectedtResult = sut.get(0);
-		assertEquals("a first test", exspectedtResult);
-		// works, but is just testing if there is an exception (& not, if it's the thrwon exception)
-//		assertThrows(IndexOutOfBoundsException.class, new Executable() {
-//
-//			@Override
-//			public void execute() throws Throwable {
-//				CustomList<String> sut = new CustomArrayList<>();
-//				sut.add("a first test");
-//				sut.add("2nd String");
-//				sut.add("third");
-//
-//				sut.get(0);
-//			}
-//		});
-		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
-            sut.get(99);
-        });
-		   assertEquals("Ooops... Index out Of Bounds or so ;)---", exception.getMessage());
-	}
-	// TODO eigener Test or not?
-//	@Test
-//	void should_throw_exception_getMethode() {
-//		CustomList<String> sut = new CustomArrayList<>();
-//		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
-//            sut.get(99);
-//        });
-//		   assertEquals("Ooops... Index out Of Bounds or so ;)---", exception.getMessage());
-//
-//
-//
-//	}
 	
-	@Test
-	void testAddTwoArguments() {
-		CustomList<String> sut = new CustomArrayList<>();
-		sut.add("a first test");
-		sut.add("2nd String");
-		sut.add("third");
-		
-			
-		boolean exspectedBoolResult = sut.add(2, "new three");
-		String exspectedtResult = sut.get(2);
-		
-		assertEquals("new three", exspectedtResult);
-		assertEquals(true, exspectedBoolResult);
-		
-		
-	}
-	@Test
-	void should_throw_exception_twoArgumentAdd() {
-
-			CustomList<String> sut = new CustomArrayList<>();
-			IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
-	            sut.add(99, "an index to make the function throw");
-	        });
-			   assertEquals("Ooops... here's the Index out Of Bounds :O ", exception.getMessage());
-	}
 
 }
