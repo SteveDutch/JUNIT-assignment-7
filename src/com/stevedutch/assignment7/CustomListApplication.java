@@ -18,6 +18,16 @@ public class CustomListApplication {
 		for (int i = 0; i < myCustomList.getSize(); i++) {
 			System.out.println(myCustomList.get(i));
 		}
+		
+		myCustomList.add("Add One");
+		for (int i = 0; i < myCustomList.getSize(); i++) {
+			System.out.println(myCustomList.get(i));
+		}
+		
+		myCustomList.add(22, "Add One");
+		for (int i = 0; i < myCustomList.getSize(); i++) {
+			System.out.println(myCustomList.get(i));
+		}
 
 	}
 
