@@ -23,7 +23,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public boolean add(int index, T item) throws IndexOutOfBoundsException  {
+	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops... here's the Index out Of Bounds :O ");
 		}
@@ -44,11 +44,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T get(int index)  throws IndexOutOfBoundsException {
+	public T get(int index) throws IndexOutOfBoundsException {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops... Index out Of Bounds or so ;)---");
 		}
-		
+
 		return (T) items[index];
 	}
 
