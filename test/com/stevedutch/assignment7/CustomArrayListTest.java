@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import com.coderscampus.arraylist.CustomList;
 
 class CustomArrayListTest {
-//	private static final Object exspectedlResult = null;
-	//TODO check Generic statt String
 	
 	@Test
 	void testAdd() {
@@ -42,7 +40,7 @@ class CustomArrayListTest {
 	            sut.add(99, "an index to make the function throw");
 	        });
 			
-			   assertEquals("Ooops... here's the Index out Of Bounds :O ", exception.getMessage());
+			   assertEquals("Ooops... here's the Index out Of Bounds because your index is too big for the array ", exception.getMessage());
 	}
 
 	@Test
@@ -69,10 +67,10 @@ class CustomArrayListTest {
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
             sut.get(99);
         });
-		   assertEquals("Ooops... Index out Of Bounds or so ;)---", exception.getMessage());
+		   assertEquals("Ooops... Index out Of Bounds because your index isn't part of the array ;)---", exception.getMessage());
 	}
 	
-	// Testing:  T remove(int index) throws IndexOutOfBoundsException
+
 	@Test
 	void should_return_T() {
 		CustomList <String> sut = new CustomArrayList<>(); 

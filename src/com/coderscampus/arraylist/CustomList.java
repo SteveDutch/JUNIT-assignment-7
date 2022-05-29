@@ -12,7 +12,7 @@ public interface CustomList<T> {
     boolean add (T item);
 
    
-    /**
+    /** -> DONE in Assignment 7 <-
      * This method should add a new item into the <code>CustomList</code> at the
      * specified index (thus shuffling the other items to the right). If the index doesn't
      * yet exist, then you should throw an <code>IndexOutOfBoundsException</code>.

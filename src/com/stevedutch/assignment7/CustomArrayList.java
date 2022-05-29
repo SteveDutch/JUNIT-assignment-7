@@ -8,24 +8,24 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	Object[] items = new Object[10];
 
-	private int place = 0;
+	private int size = 0;
 
 	@Override
 	public boolean add(T item) {
-		if (place == items.length) {
+		if (size == items.length) {
 			items = Arrays.copyOf(items, items.length *2);
 		}
-		items[place] = item;
-		place++;
+		items[size] = item;
+		size++;
 		return true;
 	}
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Ooops... here's the Index out Of Bounds :O ");
+			throw new IndexOutOfBoundsException("Ooops... here's the Index out Of Bounds because your index is too big for the array ");
 		}
-		if (place == items.length) {
+		if (size == items.length) {
 			items = Arrays.copyOf(items, items.length *2);
 		}
 		for (int i = index; i < items.length - 1; i++) {
@@ -43,7 +43,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
 		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Ooops... Index out Of Bounds or so ;)---");
+			throw new IndexOutOfBoundsException("Ooops... Index out Of Bounds because your index isn't part of the array ;)---");
 		}
 
 		return (T) items[index];

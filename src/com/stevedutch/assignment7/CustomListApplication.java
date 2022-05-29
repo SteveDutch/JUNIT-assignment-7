@@ -24,7 +24,7 @@ public class CustomListApplication {
 			System.out.println(myCustomList.get(i));
 		}
 		
-		myCustomList.add(22, "Add One");
+		myCustomList.add(19, "Add Another One");
 		for (int i = 0; i < myCustomList.getSize(); i++) {
 			System.out.println(myCustomList.get(i));
 		}
