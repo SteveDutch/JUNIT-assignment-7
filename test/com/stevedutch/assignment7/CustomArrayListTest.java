@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import com.coderscampus.arraylist.CustomList;
 
+// TODO tests for Add(int index, T item) : inserts at correct index
+// is there a throw test?
+// shuffle other items to the right.
+
 class CustomArrayListTest {
 	
 	@Test
@@ -22,14 +26,15 @@ class CustomArrayListTest {
 	@Test
 	void testAddTwoArguments() {
 		CustomList<String> sut = new CustomArrayList<>();
-		sut.add("a first test");
-		sut.add("2nd String");
-		sut.add("third");
+		for (int j = 0; j < 10; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
 			
-		boolean exspectedBoolResult = sut.add(2, "new three");
-		String exspectedtResult = sut.get(2);
+		boolean exspectedBoolResult = sut.add(9, "new test element no 1");
+		String exspectedtResult = sut.get(9);
 		
-		assertEquals("new three", exspectedtResult);
+		assertEquals("new test element no 1", exspectedtResult);
 		assertEquals(true, exspectedBoolResult);
 	}
 	
