@@ -62,8 +62,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int i = index; i < items.length - 1; i++) {
 
 			items[i] = items[i + 1];
+			// if array is full, the last element has to be set equal to null
+			// doing it anyway is cheaper than testing (?)
 
 		}
+		// if array is full, the last element has to be set equal to null
+		// doing it anyway is cheaper than testing if this is the case(?)
+		items[items.length-1] = null;
 		return removed;
 	};
 

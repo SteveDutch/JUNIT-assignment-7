@@ -75,7 +75,11 @@ class CustomArrayListTest {
 		   assertEquals("Ooops... Index out Of Bounds because your index isn't part of the array ;)---", exception.getMessage());
 	}
 	
-
+	/*
+	 * tests for 
+	 * T remove(int index) throws IndexOutOfBoundsException;
+	 */
+			
 	@Test
 	void should_return_T() {
 		CustomList <String> sut = new CustomArrayList<>(); 
@@ -114,5 +118,7 @@ class CustomArrayListTest {
         });
 		   assertEquals("Ooops...your removal lead into Index out Of Bounds or so ;)---", exception.getMessage());
 	}
+	
+	
 
 }

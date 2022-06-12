@@ -24,8 +24,19 @@ public class CustomListApplication {
 //		myCustomList.add(9, "added element no. 1");
 //		myCustomList.add(7, "added element no. 2");
 //		
-		String testo = myCustomList.remove(9);
-		System.out.println(testo);
+		
+
+		for (int i = 0; i < myCustomList.getSize(); i++) {
+			System.out.println(myCustomList.get(i));
+		}	
+		
+		System.out.println(myCustomList.getSize());
+		String testo = myCustomList.remove(3);
+
+		
+		
+		System.out.println("Entfernt worden ist:" + testo);
+		System.out.println(myCustomList.getSize());
 		
 		for (int i = 0; i < myCustomList.getSize(); i++) {
 			System.out.println(myCustomList.get(i));
