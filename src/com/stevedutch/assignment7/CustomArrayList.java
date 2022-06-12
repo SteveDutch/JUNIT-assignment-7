@@ -53,7 +53,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops...your removal lead into Index out Of Bounds or so ;)---");
 		}
-		T removed = (T) items[index];
+		T removed = (T) items[index]; 
+		if (index == items.length-1) {
+			items[index] = null;
+			return removed;
+		}
 		items[index] = items[index + 1];
 		for (int i = index; i < items.length - 1; i++) {
 
