@@ -21,7 +21,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
+		Object buffer = null;
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops... here's the Index out Of Bounds because your index is too big for the array ");
 		}
@@ -29,9 +30,14 @@ public class CustomArrayList<T> implements CustomList<T> {
 			items = Arrays.copyOf(items, items.length *2);
 		}
 		for (int i = index; i < items.length - 1; i++) {
-			items[i] = items[i + 1];
+			buffer = items[i];
+			items[i] = item;
+			item = buffer;
+			
+		
+			
 		}
-		items[index] = item;
+		//items[index] = item;
 		return true;
 	}
 

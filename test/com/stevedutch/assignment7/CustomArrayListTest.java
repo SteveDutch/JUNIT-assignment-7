@@ -23,8 +23,13 @@ class CustomArrayListTest {
 		assertEquals(true, exspectedResult);
 	}
 	
+	/*
+	 * Tests for 
+	 * boolean add (int index, T item) throws IndexOutOfBoundsException;
+	 */		
+	
 	@Test
-	void testAddTwoArguments() {
+	void should_add_element_at_given_index_andreturn_true() {
 		CustomList<String> sut = new CustomArrayList<>();
 		for (int j = 0; j < 10; j++) {
 			String elem = "test element " + String.valueOf(j);
@@ -34,12 +39,26 @@ class CustomArrayListTest {
 		boolean exspectedBoolResult = sut.add(9, "new test element no 1");
 		String exspectedtResult = sut.get(9);
 		
-		assertEquals("new test element no 1", exspectedtResult);
-		assertEquals(true, exspectedBoolResult);
+		assertEquals(exspectedtResult, "new test element no 1");
+		assertEquals(exspectedBoolResult, true);
 	}
 	
 	@Test
-	void should_throw_exception_twoArgumentAdd() {
+	void should_shuffle_other_items_to_the_right() {
+		CustomList<String> sut = new CustomArrayList<>();
+		for (int j = 0; j < 7; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
+		
+		sut.add(4, "new element");
+		String exspectedResult = sut.get(6);
+		
+		assertEquals("test element 5", exspectedResult);
+	}
+	
+	@Test
+	void should_throw_exception_if_index_out_of_array() {
 			CustomList<String> sut = new CustomArrayList<>();
 			IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 	            sut.add(99, "an index to make the function throw");
