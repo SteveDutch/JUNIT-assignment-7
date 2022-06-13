@@ -13,7 +13,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public boolean add(T item) {
 		if (size == items.length) {
-			items = Arrays.copyOf(items, items.length *2);
+			items = Arrays.copyOf(items, items.length * 2);
 		}
 		items[size] = item;
 		size++;
@@ -21,23 +21,22 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public boolean add(int index, Object item) throws IndexOutOfBoundsException {
-		Object buffer = null;
+	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+		T buffer = null;
 		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Ooops... here's the Index out Of Bounds because your index is too big for the array ");
+			throw new IndexOutOfBoundsException(
+					"Ooops... here's the Index out Of Bounds because your index is too big for the array ");
 		}
 		if (size == items.length) {
-			items = Arrays.copyOf(items, items.length *2);
+			items = Arrays.copyOf(items, items.length * 2);
 		}
 		for (int i = index; i < items.length - 1; i++) {
-			buffer = items[i];
+			buffer = (T) items[i];
 			items[i] = item;
 			item = buffer;
-			
-		
-			
+
 		}
-		//items[index] = item;
+
 		return true;
 	}
 
@@ -49,7 +48,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
 		if (index > items.length) {
-			throw new IndexOutOfBoundsException("Ooops... Index out Of Bounds because your index isn't part of the array ;)---");
+			throw new IndexOutOfBoundsException(
+					"Ooops... Index out Of Bounds because your index isn't part of the array ;)---");
 		}
 
 		return (T) items[index];
@@ -59,8 +59,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if (index > items.length) {
 			throw new IndexOutOfBoundsException("Ooops...your removal lead into Index out Of Bounds or so ;)---");
 		}
-		T removed = (T) items[index]; 
-		if (index == items.length-1) {
+		T removed = (T) items[index];
+		if (index == items.length - 1) {
 			items[index] = null;
 			return removed;
 		}
@@ -68,14 +68,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int i = index; i < items.length - 1; i++) {
 
 			items[i] = items[i + 1];
-			// if array is full, the last element has to be set equal to null
-			// doing it anyway is cheaper than testing (?)
 
 		}
 		// if array is full, the last element has to be set equal to null
 		// doing it anyway is cheaper than testing if this is the case(?)
-		items[items.length-1] = null;
+		items[items.length - 1] = null;
 		return removed;
-	};
+	}
 
 }
