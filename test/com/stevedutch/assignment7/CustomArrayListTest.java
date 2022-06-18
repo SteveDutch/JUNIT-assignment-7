@@ -55,6 +55,21 @@ class CustomArrayListTest {
 
 		assertEquals("test element 5", exspectedResult);
 	}
+	
+	@Test
+	void should_always_set_size_to_number_of_actual_stord_elements() {
+		CustomList<String> sut = new CustomArrayList<>();
+		for (int j = 0; j < 7; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
+
+		sut.add(4, "new element");
+		int exspectedResult = sut.getSize();
+				
+		assertEquals(8, exspectedResult);
+		
+	}
 
 	@Test
 	void should_throw_exception_if_index_out_of_array() {
@@ -75,7 +90,7 @@ class CustomArrayListTest {
 
 		int exspectedResult = sut.getSize();
 
-		assertEquals(10, exspectedResult);
+		assertEquals(2, exspectedResult);
 	}
 
 	@Test

@@ -42,7 +42,14 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		return items.length;
+		int i = 0;
+		while (items[i] != null) {
+			i++;
+		}
+		return i;
+		//wrong solution, because it returns the array length instead
+		// of the the number of actual elements stored
+//		return items.length;
 	}
 
 	@Override
