@@ -11,10 +11,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 	private int size = 0;
 	
 	
-	// TODO check sould_always ... if it's really working & if 
-	// 		the bug is fixed
-	//		fix remove()
-	
 	@Override
 	public boolean add(T item) {
 		if (size == items.length) {
@@ -48,16 +44,16 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		// OutOfBoundsException when arrays.length = 10
-//		int i = 0;
-//		while (items[i] != null) {
-//			i++;
-//		}
-//		return i;
-		//wrong solution, because it returns the array length instead
-		// of the the number of actual elements stored
+		/*
+		 * OutOfBoundsException when arrays.length = 10 int i = 0; while (items[i] !=
+		 * null) { i++; } return i;
+		 */
 		
-//		return items.length;
+		 /*
+		  * wrong solution, because it returns the array length instead of the the number
+		 * of actual elements stored 
+		 * return items.length;
+		 */
 		
 		// should work now, 'cause i should have fixed size in add + remove
 		return size;

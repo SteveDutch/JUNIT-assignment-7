@@ -2,17 +2,14 @@ package com.stevedutch.assignment7;
 
 import static org.junit.Assert.assertEquals;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 import com.coderscampus.arraylist.CustomList;
 
 class CustomArrayListTest {
-//TODO add test for variabla size like add(index, T)
+
 	@Test
 	void testAdd() {
 		CustomList<String> sut = new CustomArrayList<>();
@@ -66,7 +63,8 @@ class CustomArrayListTest {
 			String elem = "test element " + String.valueOf(j);
 			sut.add(elem);
 		}
-
+		
+		// use of reflection
 		sut.add(4, "new element");
 		Field field = null;
 		field = sut.getClass().getDeclaredField("size");
@@ -78,7 +76,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_throw_exception_if_index_out_of_array() {
+	void should_throw_exception_if_index_is_out_of_array() {
 		CustomList<String> sut = new CustomArrayList<>();
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(99, "an index to make the function throw");
