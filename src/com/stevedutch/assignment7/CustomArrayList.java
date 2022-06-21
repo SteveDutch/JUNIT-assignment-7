@@ -9,7 +9,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 
 	private int size = 0;
-
+	
+	
+	// TODO check sould_always ... if it's really working & if 
+	// 		the bug is fixed
+	//		fix remove()
+	
 	@Override
 	public boolean add(T item) {
 		if (size == items.length) {
@@ -36,20 +41,26 @@ public class CustomArrayList<T> implements CustomList<T> {
 			item = buffer;
 
 		}
+		size++;
 
 		return true;
 	}
 
 	@Override
 	public int getSize() {
-		int i = 0;
-		while (items[i] != null) {
-			i++;
-		}
-		return i;
+		// OutOfBoundsException when arrays.length = 10
+//		int i = 0;
+//		while (items[i] != null) {
+//			i++;
+//		}
+//		return i;
 		//wrong solution, because it returns the array length instead
 		// of the the number of actual elements stored
+		
 //		return items.length;
+		
+		// should work now, 'cause i should have fixed size in add + remove
+		return size;
 	}
 
 	@Override
@@ -63,12 +74,16 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	public T remove(int index) throws IndexOutOfBoundsException {
-		if (index > items.length) {
+		if (index > items.length-1) {
 			throw new IndexOutOfBoundsException("Ooops...your removal lead into Index out Of Bounds or so ;)---");
+		}
+		if (index >= size) {
+			throw new IndexOutOfBoundsException("Ooops...your chosen index was out of bounds");
 		}
 		T removed = (T) items[index];
 		if (index == items.length - 1) {
 			items[index] = null;
+			size--;
 			return removed;
 		}
 		items[index] = items[index + 1];
@@ -80,6 +95,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// if array is full, the last element has to be set equal to null
 		// doing it anyway is cheaper than testing if this is the case(?)
 		items[items.length - 1] = null;
+		size--;
 		return removed;
 	}
 

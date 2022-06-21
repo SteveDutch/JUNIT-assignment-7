@@ -1,6 +1,8 @@
 package com.stevedutch.assignment7;
 
 import static org.junit.Assert.assertEquals;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -10,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import com.coderscampus.arraylist.CustomList;
 
 class CustomArrayListTest {
-
+//TODO add test for variabla size like add(index, T)
 	@Test
 	void testAdd() {
 		CustomList<String> sut = new CustomArrayList<>();
@@ -23,12 +25,11 @@ class CustomArrayListTest {
 	}
 
 	/*
-	 * Tests for 
-	 * boolean add (int index, T item) throws IndexOutOfBoundsException;
+	 * Tests for boolean add (int index, T item) throws IndexOutOfBoundsException;
 	 */
 
 	@Test
-	void should_add_element_at_given_index_andreturn_true() {
+	void should_add_element_at_given_index_and_return_true() {
 		CustomList<String> sut = new CustomArrayList<>();
 		for (int j = 0; j < 10; j++) {
 			String elem = "test element " + String.valueOf(j);
@@ -55,20 +56,25 @@ class CustomArrayListTest {
 
 		assertEquals("test element 5", exspectedResult);
 	}
-	
+
 	@Test
-	void should_always_set_size_to_number_of_actual_stord_elements() {
+	void should_always_set_size_to_number_of_actual_stored_elements()
+			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		CustomList<String> sut = new CustomArrayList<>();
+
 		for (int j = 0; j < 7; j++) {
 			String elem = "test element " + String.valueOf(j);
 			sut.add(elem);
 		}
 
 		sut.add(4, "new element");
-		int exspectedResult = sut.getSize();
-				
+		Field field = null;
+		field = sut.getClass().getDeclaredField("size");
+		field.setAccessible(true);
+		int exspectedResult = field.getInt(sut);
+
 		assertEquals(8, exspectedResult);
-		
+
 	}
 
 	@Test
@@ -111,8 +117,7 @@ class CustomArrayListTest {
 	}
 
 	/*
-	 * tests for 
-	 * T remove(int index) throws IndexOutOfBoundsException;
+	 * tests for T remove(int index) throws IndexOutOfBoundsException;
 	 */
 
 	@Test
@@ -146,12 +151,29 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_throw_IndexOutOfBoundsException() {
+	void should_throw_IndexOutOfBoundsException_when_index_bigger_than_length() {
 		CustomList<String> sut = new CustomArrayList<>();
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.remove(99);
 		});
 		assertEquals("Ooops...your removal lead into Index out Of Bounds or so ;)---", exception.getMessage());
+	}
+
+	@Test
+	void should_throw_Exception_when_index_biggger_than_number_of_stored_elements() {
+		CustomList<String> sut = new CustomArrayList<>();
+
+		for (int j = 0; j < 7; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
+		
+		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+			sut.remove(7);
+		});
+
+		assertEquals("Ooops...your chosen index was out of bounds", exception.getMessage());
+
 	}
 
 }
