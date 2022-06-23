@@ -105,11 +105,29 @@ class CustomArrayListTest {
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(99, "an index to make the function throw");
 		});
+		
+		assertEquals("Ooops... here's the Index out Of Bounds because your index is too big for the array ",
+				exception.getMessage());
+		
+	}
+
+	@Test
+	void should_throw_exception_if_index_is_bigger_than_number_elements() {
+		CustomList<String> sut = new CustomArrayList<>();
+		for (int j = 0; j < 7; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
+		
+		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+			sut.add(8, "an index to make the function throw");
+		});
 
 		assertEquals("Ooops... here's the Index out Of Bounds because your index is too big for the array ",
 				exception.getMessage());
+		
 	}
-
+	
 	@Test
 	void testGetSize() {
 		CustomList<String> sut = new CustomArrayList<>();

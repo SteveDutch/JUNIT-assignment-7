@@ -22,6 +22,7 @@ public class CustomListApplication {
 		myCustomList.add(7, "added element no. 3");
 		System.out.println("size = " + String.valueOf(myCustomList.getSize()));
 		
+		myCustomList.add(14, "element 99");
 		myCustomList.remove(5);
 		//myCustomList.remove(18);
 		System.out.println("size = " + String.valueOf(myCustomList.getSize()));

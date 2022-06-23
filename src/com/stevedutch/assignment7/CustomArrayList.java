@@ -13,25 +13,27 @@ public class CustomArrayList<T> implements CustomList<T> {
 	
 	@Override
 	public boolean add(T item) {
+		boolean added = false;
 		if (size == items.length) {
 			items = Arrays.copyOf(items, items.length * 2);
 		}
 		items[size] = item;
+		added = true;
 		size++;
-		return true;
+		return added;
 	}
 
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		T buffer = null;
-		if (index > items.length) {
+		if (index > items.length || index > size) {
 			throw new IndexOutOfBoundsException(
 					"Ooops... here's the Index out Of Bounds because your index is too big for the array ");
 		}
 		if (size == items.length) {
 			items = Arrays.copyOf(items, items.length * 2);
 		}
-		for (int i = index; i < items.length - 1; i++) {
+		for (int i = index; i <= items.length - 1; i++) {
 			buffer = (T) items[i];
 			items[i] = item;
 			item = buffer;
