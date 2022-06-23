@@ -35,11 +35,35 @@ class CustomArrayListTest {
 
 		boolean exspectedBoolResult = sut.add(9, "new test element no 1");
 		String exspectedtResult = sut.get(9);
+		sut.remove(9);
+		sut.add(9, "new test element no 2");
+		String exspectedtResult2 = sut.get(9);
+		
+		
 
 		assertEquals("new test element no 1", exspectedtResult);
 		assertEquals(true, exspectedBoolResult);
+		assertEquals("new test element no 2", exspectedtResult2);
+		
 	}
 
+	@Test
+	void should_add_element_at_given_last_index_after_earlier_remove() {
+		CustomList<String> sut = new CustomArrayList<>();
+		for (int j = 0; j < 10; j++) {
+			String elem = "test element " + String.valueOf(j);
+			sut.add(elem);
+		}
+
+		sut.remove(9);
+		sut.add(9, "new test element no 2");
+		String exspectedtResult2 = sut.get(9);
+
+		assertEquals("new test element no 2", exspectedtResult2);
+		
+	}	
+	
+	
 	@Test
 	void should_shuffle_other_items_to_the_right() {
 		CustomList<String> sut = new CustomArrayList<>();
