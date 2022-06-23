@@ -1,7 +1,6 @@
 package com.stevedutch.assignment7;
 
 import com.coderscampus.arraylist.CustomList;
-
 import java.util.Arrays;
 
 public class CustomArrayList<T> implements CustomList<T> {
@@ -9,8 +8,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 
 	private int size = 0;
-	
-	
+
 	@Override
 	public boolean add(T item) {
 		boolean added = false;
@@ -47,16 +45,18 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public int getSize() {
 		/*
-		 * OutOfBoundsException when arrays.length = 10 int i = 0; while (items[i] !=
-		 * null) { i++; } return i;
+		 * OutOfBoundsException when arrays.length = 10 
+		 * int i = 0; 
+		 * while (items[i] != null) { i++; } 
+		 * return i;
 		 */
-		
-		 /*
-		  * wrong solution, because it returns the array length instead of the the number
+
+		/*
+		 * wrong solution, because it returns the array length instead of the the number
 		 * of actual elements stored 
 		 * return items.length;
 		 */
-		
+
 		// should work now, 'cause i should have fixed size in add + remove
 		return size;
 	}
@@ -72,7 +72,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	public T remove(int index) throws IndexOutOfBoundsException {
-		if (index > items.length-1) {
+		if (index > items.length - 1) {
 			throw new IndexOutOfBoundsException("Ooops...your removal lead into Index out Of Bounds or so ;)---");
 		}
 		if (index >= size) {

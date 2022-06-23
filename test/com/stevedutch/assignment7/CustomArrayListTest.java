@@ -2,7 +2,6 @@ package com.stevedutch.assignment7;
 
 import static org.junit.Assert.assertEquals;
 import java.lang.reflect.Field;
-import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
@@ -38,13 +37,11 @@ class CustomArrayListTest {
 		sut.remove(9);
 		sut.add(9, "new test element no 2");
 		String exspectedtResult2 = sut.get(9);
-		
-		
 
 		assertEquals("new test element no 1", exspectedtResult);
 		assertEquals(true, exspectedBoolResult);
 		assertEquals("new test element no 2", exspectedtResult2);
-		
+
 	}
 
 	@Test
@@ -60,10 +57,9 @@ class CustomArrayListTest {
 		String exspectedtResult2 = sut.get(9);
 
 		assertEquals("new test element no 2", exspectedtResult2);
-		
-	}	
-	
-	
+
+	}
+
 	@Test
 	void should_shuffle_other_items_to_the_right() {
 		CustomList<String> sut = new CustomArrayList<>();
@@ -87,7 +83,7 @@ class CustomArrayListTest {
 			String elem = "test element " + String.valueOf(j);
 			sut.add(elem);
 		}
-		
+
 		// use of reflection
 		sut.add(4, "new element");
 		Field field = null;
@@ -105,29 +101,29 @@ class CustomArrayListTest {
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(99, "an index to make the function throw");
 		});
-		
+
 		assertEquals("Ooops... here's the Index out Of Bounds because your index is too big for the array ",
 				exception.getMessage());
-		
+
 	}
 
 	@Test
-	void should_throw_exception_if_index_is_bigger_than_number_elements() {
+	void should_throw_exception_if_index_is_bigger_than_number_of_elements() {
 		CustomList<String> sut = new CustomArrayList<>();
 		for (int j = 0; j < 7; j++) {
 			String elem = "test element " + String.valueOf(j);
 			sut.add(elem);
 		}
-		
+
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.add(8, "an index to make the function throw");
 		});
 
 		assertEquals("Ooops... here's the Index out Of Bounds because your index is too big for the array ",
 				exception.getMessage());
-		
+
 	}
-	
+
 	@Test
 	void testGetSize() {
 		CustomList<String> sut = new CustomArrayList<>();
@@ -207,7 +203,7 @@ class CustomArrayListTest {
 			String elem = "test element " + String.valueOf(j);
 			sut.add(elem);
 		}
-		
+
 		IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.remove(7);
 		});
